@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# 如果本文件有改动，就会重新请求缓存的资源(即使是注释的改动)
+#9/27/2017, 3:04:25 PM 2
+#需要缓存的资源
+#html
+#https://github.com/
+http://172.20.200.78:3000/qd/offline
+#img
+#https://assets-cdn.github.com/images/modules/site/universe-octoshop.png
+#https://assets-cdn.github.com/images/modules/site/universe-wordmark.png
+#css
+#https://assets-cdn.github.com/assets/frameworks-bedfc518345231565091.css
+#js
+#https://assets-cdn.github.com/assets/compat-94eba6e3cd1fa18902d9.js
+
+# 需要联网加载的资源 （下面的 * 表示，除了上面缓存的文件外都需要联网加载）
+NETWORK:
+*
+
+# 表示替代资源（如果一些资源加载不到，就是用替代资源）
+FALLBACK
+#https://github.com/ /html/manifest/html/home.html

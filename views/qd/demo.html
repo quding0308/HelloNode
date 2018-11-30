@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html onload="htmlOnload()">
+
+<head>
+	<title>title123</title>
+
+	<!-- 规定HTML的字符编码。用于 替换：
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+	<meta charset="UTF-8" />
+
+	<!-- 告诉搜索引擎 网页的关键字 -->
+	<meta name="keywords" content="keywords">
+	
+	<!-- 告诉搜索引擎 网页的主要内容 -->
+	<meta name="description" content="Free Web tutorials">
+	
+	<!-- 网页作者 -->
+	<meta name="author" content="quding0308">
+
+	<!-- 移动端的窗口，常用语移动端网页 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	
+	<!-- 指定IE和Chrome使用最新版本渲染当前页面 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> 
+
+	<!-- 页面的cache control -->
+	<meta http-equiv="cache-control" content="no-cache">
+
+
+	<link rel="stylesheet" type="text/css" href="../css/test.css" />
+
+	<script src="../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/qing.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script>
+		window.onload = function () {
+			console.log("window onload");
+		}
+
+		console.log(document.readyState);
+
+		document.onreadystatechange = function (dom, event) {
+			console.log("onreadystatechange");
+			console.log(document.readyState);
+		}
+
+	</script>
+</head>
+
+<body>
+	<div>
+		<img src="../img/HBuilder.png" />
+	</div>
+
+	<div>
+		<button type="button" onclick="loadXMLDoc()">button get1</button>
+		<br />
+		<button type="button" onclick="loadXMLDocPost()">button post</button>
+		<br />
+		<button type="button" onclick="finishLesson()">button test</button>
+	</div>
+
+	<script>
+		// var url = 'https://do.yunzhijia.com/cloudwork/idx/manage/isAdmin?a=b&c=你好';
+		var url = 'ht://abd12';
+
+		var url1 = escape(url);
+		var url2 = encodeURI(url);
+		var url3 = encodeURIComponent(url);
+
+		var title = document.title;
+
+		var obj = {"name": "Peter", "sex": "male"};
+		// obj.
+
+		var json = '{"name": "Peter", "sex": "male"}';
+		var obj2 = eval('(' + json + ')');
+		obj = JSON.parse(json);
+
+		var obj5 = JSON.parse('[]');
+		var obj6 = JSON.parse('{}');
+
+		var str2 = JSON.stringify(obj);
+		
+		//json.parseJSON();
+
+
+		XuntongJSBridge.call('cloudoffice.request', {
+			'url': url2,
+			'method': 'post',
+			'serializes': 'json',
+			'data': {
+				c: 2
+			}
+		},
+			function (result) {
+				alert("结果：" + JSON.stringify(result));
+			}
+		);
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html onload="htmlOnload()">
+	<head>
+		<title>456title</title>
+		<meta charset="UTF-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+
+		<script src="../js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="../js/main.js" type="text/javascript" charset="utf-8"></script> -->
+		<!-- <script src="../js/test.js" type="text/javascript" charset="utf-8"></script> -->
+		<!-- <script src="../js/strict_js.js" type="text/javascript" charset="utf-8"></script>
+		-->
+
+		<script src="../js/dist/test3.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script>
+			window.onload = function() {
+				console.log("window onload");
+				
+				// var os = $.os.chrome;
+			}
+			
+			console.log(document.readyState);
+			document.onreadystatechange = function(dom, event) {
+				console.log("onreadystatechange");
+				console.log(document.readyState);
+			}
+
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="../css/test.css"/>
+	</head>
+	<body >
+		<div>
+			<img src="../img/HBuilder.png"/>
+		</div>
+		
+		<div>
+			<button type="button" onclick="loadXMLDoc()">button get1</button>
+			<br />
+			<button type="button" onclick="loadXMLDocPost()">button post</button>
+			<br />
+			<button type="button" onclick="finishLesson()">button test</button>
+		</div>
+		
+		<div id="myDiv">
+			
+		</div>
+		
+		<script>
+			// finishLesson();
+		</script>
+		
+	</body>
+</html>

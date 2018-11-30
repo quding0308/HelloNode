@@ -1,0 +1,17 @@
+
+html{
+    background-color: white
+}
+body{
+    text-align: center;
+    -webkit-user-select: none;
+    background-color: gray;
+}
+input[type=button]{
+    width: 90px;
+}
+ul{display: none}
+#d1{
+    font-family: "微软雅黑";
+    background-image: url(img/HBuilder.png)
+}

@@ -1,0 +1,24 @@
+{
+  "name": "expressapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "webpack",
+    "debug":"DEBUG=expressapp:* npm start"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "pug": "^2.0.3",
+    "zepto": "^1.2.0"
+  },
+  "devDependencies": {
+    "node-hot-loader": "^1.11.1",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  }
+}

@@ -1,0 +1,196 @@
+
+<html>
+    <header>
+        <title>你好</title>
+		<meta charset="UTF-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+
+        <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+    </header>
+    
+    <body>
+        <p>缩进 body 标签没有意义，1</p>
+        <p>因为 HTML 本身对空格不敏感。</p>
+        <div>1234456789</div>
+        <script>
+            console.log(1);
+            setTimeout(function() {
+                console.log(11);
+            }, 0);
+            console.log(2);
+
+            setTimeout(function() {
+                console.log(22);
+            });
+
+            // setInterval(function() {
+            //     console.log('interval');
+            // },1000);
+
+            console.log(3);
+            
+            // document.onclick = function() {
+            //     console.log("click");
+            // }
+            // for(var i = 0; i< 100000000; i++);
+        </script>
+
+        <script>
+            var counter = 0;
+            var initTime = new Date().getTime();
+            var timer = setInterval(function() {
+                if(counter===2) {
+                clearInterval(timer);
+                }
+                if(counter === 0) {
+                for(var i = 0; i < 1990000000; i++) {
+                    ;
+                }
+                }
+                console.log("第"+counter+"次：" + (new Date().getTime() - initTime) + " ms");
+                counter++;
+            },1000);
+
+            // 利用 setTimeout 模仿 setInterval
+            // var timer = setTimeout(function() {
+            //     if(counter===2) {
+            //     clearInterval(timer);
+            //     }
+            //     if(counter === 0) {
+            //     for(var i = 0; i < 1990000000; i++) {
+            //         ;
+            //     }
+            //     }
+
+            //     console.log("第"+counter+"次：" + (new Date().getTime() - initTime) + " ms");
+
+            //     counter++;
+            //     setTimeout(arguments.callee, 1000);
+            // },1000);
+        </script>
+    
+        <!-- <script src="https://xteko.blob.core.windows.net/neo/eruda-loader.js"></script> -->
+
+		<script src="https://cdn.bootcss.com/vConsole/3.2.0/vconsole.min.js"></script>
+		<script>
+			var vConsole = new VConsole(); 	// 初始化
+            console.log('Hello world');
+            
+            let obj = {};
+            obj.a = "221";
+            obj.b = "123";
+            
+            var o = {
+                a: 2,
+                m: function(){
+                    return this.a + 1;
+                }
+            };
+            console.log(o.m()); // 3
+            // 当调用 o.m 时,'this'指向了o.
+
+            // var p = Object.create(o);
+            // p是一个继承自 o 的对象
+
+            // p.a = 4; // 创建 p 的自身属性 a
+            // console.log(p.m()); // 5
+            // 调用 p.m 时, 'this'指向 p. 
+            // 又因为 p 继承 o 的 m 函数
+            // 此时的'this.a' 即 p.a，即 p 的自身属性 'a'
+
+            // 构造函数 new 构造函数 就会生成一个实例
+            function DOG(name) {
+                this.name = name;
+            }
+
+            /*
+            对象之间要共享数据
+            对象之间 要有 共有的属性 和 方法
+            为 构造函数 设置一个 prototype 属性(其实就是一个对象)
+            */
+            
+            /*
+            所有实例对象需要共享的属性和方法，都放在 prototype 中
+            不需要共享的属性和方法 放到构造函数中
+
+            实例对象一旦创建，将自动引用prototype对象的属性和方法。
+            也就是说，实例对象的属性和方法，分成两种，一种是本地的，另一种是引用的。
+            */
+            DOG.prototype = { species: '犬类' };
+
+            // 原型链 o --> Object.prototype --> null
+            var o = {a : 1};
+
+            // 原型链 a -> Array.prototype --> Object.prototype --> null
+            var a = ["1", "2", "3"];
+
+            // 原型链  f --> Function.prototype --> Object.prototype --> null
+            function f() { return 2; }
+
+            // 构造器其实就是一个普通函数，当使用new操作符来作用于这个函数时，它就可以被称为构造函数。
+            function Graph() {
+                this.vertices = [];
+                this.edges = [];
+            }
+            Graph.prototype = {
+                addVertex: function(v) {
+                    this.vertices.push(v);
+                }
+            };
+            var g = new Graph();
+
+            // 原型链 b --> o --> Object.prototype --> null
+            var b = Object.create(o);   // 传入的参数 是 新对象的原型
+            console.log(b.a);   // 
+            b.b = "321";
+
+            var c = Object.create(b);
+            console.log(c.a);
+
+            
+            function A(a) { 
+                this.varA = a;
+             }
+
+            //  a.prototype = {
+            //      varA : null,
+            //  };
+             
+            var oa = new A("1");
+            // 实际等价于下面的代码
+            var oaa = new Object();
+            oaa.prototype = A.prototype;
+            A.call(oaa);
+                
+
+            // 几乎所有的 JavaScript 对象都是 Object 的实例
+            // 一个典型的对象继承了Object.prototype的属性（包括方法），尽管这些属性可能被遮蔽（亦称为覆盖）。
+            // 
+
+            /*
+            参考：https://blog.csdn.net/ligang2585116/article/details/53522741
+
+            __proto__是每个对象都有的一个属性，而prototype是函数才会有的属性
+            使用Object.getPrototypeOf()代替__proto__
+            
+            几乎所有的函数（除了一些内建函数）都有一个名为prototype（原型）的属性，这个属性是一个指针，指向一个对象，
+            而这个对象的用途是包含可以有特定类型的所有实例共享的属性和方法。
+            prototype是通过调用构造函数而创建的那个对象实例的原型对象。
+
+            Fun.prototype 为自对象，
+            Fun.prototype.__proto__ 为继承对象，自对象和继承对象的并集，构成了新建函数对象的属性和方法。
+            obj（new Fun）.__proto__实质上等于Fun.prototype
+            */
+
+
+            console.log("221");
+        </script>
+        
+		<!-- <script src="../js/vconsole-loader.js" type="text/javascript" charset="utf-8"></script> -->
+        <!-- <script src="http://pc5ouzvhg.bkt.clouddn.com/vconsole-loader.js" type="text/javascript" charset="utf-8"></script> -->
+
+    </body>
+    
+    </html>
+    
