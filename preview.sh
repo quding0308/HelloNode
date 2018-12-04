@@ -1,3 +1,3 @@
 #!/bin/sh
 
-gitbook serve
+DEBUG=expressapp:* npm start
